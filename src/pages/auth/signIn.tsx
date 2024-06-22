@@ -1,3 +1,4 @@
+import { config } from "@/config";
 import { BaseUser } from "@/types/user";
 import { Box, Button, Divider, TextField } from "@mui/material";
 import { signIn } from "next-auth/react";
@@ -56,7 +57,11 @@ const SignIn = () => {
           <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
             <Button
               variant="contained"
-              onClick={() => signIn("google", { callbackUrl: "/backoffice" })}
+              onClick={() =>
+                signIn("google", {
+                  callbackUrl: `${config.callbackUrl}/backoffice`,
+                })
+              }
             >
               sign in with google
             </Button>
